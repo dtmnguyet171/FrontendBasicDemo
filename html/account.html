@@ -1,0 +1,141 @@
+<div class="container">
+    <h2>Quản lý Account</h2>
+    <div class="card">
+        <div class="card-header">
+         <h3>Thông tin tìm kiếm</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+                <b>Từ khóa</b>
+            </div>
+            <div class="col-3">
+                <b>Role</b>
+            </div>
+            <div class="col-3">
+                <b>Department</b>
+            </div>
+            <div class="col-2">
+                <b>Tìm kiếm</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+                <input type="text" id="nameSearch" class="form-control" placeholder="Nhập từ khoá tìm kiếm">            </div>
+            <div class="col-3">
+                <select id="roleSearch" name="role" class="operator form-control">
+                    <option value="">--- Mời lựa chọn ---</option>
+                    <option value="EMPLOYEE">Employee</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="MANAGER">Manager</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <select id="departmentSearch" name="role" class="operator form-control">
+                    <option value="">--- Mời lựa chọn ---</option>
+                    <option value="EMPLOYEE">Java</option>
+                    <option value="ADMIN">PHP</option>
+                    <option value="MANAGER">React</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" onclick="searchAccount()">Search</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    <!-- Bảng -->
+    <div class="card mt-5">
+        <div class="card-header">
+         <div class="row">
+            <div class="col-9">
+                Danh sách Account
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-info text-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="addNewAccount()"><i
+                    class="fa fa-plus"></i> 
+                    Add New
+                </button>
+         </div>
+         </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Created Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        
+      </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Thêm mới account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <input type="hidden" id="accountIdUpdate" name="id">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="avatar"><b>Avatar</b></label>
+                <input type="text" class="form-control" placeholder="Enter avatar"
+                    id="avatar" required>
+            </div>
+            <div class="form-group">
+                <label for="name"><b>Name</b></label>
+                <input type="text" class="form-control" placeholder="Enter name"
+                    id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address"><b>Address</b></label>
+                <input type="text" class="form-control" placeholder="Enter address"
+                    id="address" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="saveAccount()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-success" id="success-alert" style="display: none;">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Success! </strong>
+  </div>
+  <!-- Modal Confirm Delete -->
+<div class="modal" id="modalConfirmDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="accountIdDelete" name="id">
+                <p>Bạn có muốn xoá dữ liệu?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteAccount()">Xoá</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
